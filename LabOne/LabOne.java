@@ -8,6 +8,10 @@ public class LabOne {
 		printArbitraryNumbers();
 		System.out.println("==============");
 		times();
+		System.out.println("==============");
+		System.out.println(howManyCollatzIterations(10));
+		System.out.println(howManyCollatzIterations(100));
+		System.out.println(howManyCollatzIterations(53));
 	} 
 	
 	public static void printArbitraryNumbers() { 
@@ -22,8 +26,8 @@ public class LabOne {
 	}
 	
 	public static void times() {
-		int[] arr = generateBigArray(Integer.MAX_VALUE / 2);
-		int key = arr[(int) (Math.random() * (Integer.MAX_VALUE / 2))];
+		int[] arr = generateBigArray(10000);
+		int key = arr[(int) (Math.random() * 10000)];
 		long startTime = System.nanoTime();
 		long endTime = 0;
 		for (int i : arr) {
@@ -47,6 +51,19 @@ public class LabOne {
 			numbers[i] = (int) (Math.random() * 9999);
 		}
 		return numbers;	
+	}
+
+	public static int howManyCollatzIterations(int n) {
+		int count = 0;
+		while (n != 1) {
+			count++;
+			if (n % 2 == 0) {
+				n /= 2;
+			} else {
+				n = (n * 3) + 1;
+			}
+		}
+		return count;
 	}
 	
 }
